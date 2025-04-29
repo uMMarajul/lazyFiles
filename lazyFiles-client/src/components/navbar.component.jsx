@@ -21,6 +21,7 @@ const Navbar = ({onMenuClick}) => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
     const userState = useSelector((state) => state.user);
+    console.log(userState);
 
     const handleAvatarClick = (event) => {
         setAnchorEl(event.currentTarget);

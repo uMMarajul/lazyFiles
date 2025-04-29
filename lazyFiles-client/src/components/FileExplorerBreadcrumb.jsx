@@ -1,55 +1,32 @@
-import React from "react";
-import { Breadcrumbs, Link, Typography } from "@mui/material";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from 'react';
+import { Breadcrumbs, Link, Typography } from '@mui/material';
+import { NavigateNext as NavigateNextIcon } from '@mui/icons-material';
 
-const BreadcrumbNav = () => {
-    const navigate = useNavigate();
-
-    // Split pathname into parts and filter out empty segments
-    const pathnames = ["home"];
-
-    const handleClick = (to) => {
-        navigate(to);
-    };
-
+export default function FileExplorerBreadcrumb({ currentPath, handlePathClick }) {
     return (
         <Breadcrumbs
             separator={<NavigateNextIcon fontSize="small" />}
             aria-label="breadcrumb"
         >
-            <Link
-                underline="hover"
-                color="inherit"
-                onClick={() => handleClick("/")}
-                sx={{ cursor: "pointer" }}
-            >
-                Home
-            </Link>
-            {pathnames.map((value, index) => {
-                const to = `/${pathnames.slice(0, index + 1).join("/")}`;
-                const isLast = index === pathnames.length - 1;
+            {currentPath.map((path, index) => {
+                const isLast = index === currentPath.length - 1;
 
                 return isLast ? (
-                    <Typography color="text.primary" key={to}>
-                        {decodeURIComponent(value)}
+                    <Typography key={index} color="text.primary">
+                        {path}
                     </Typography>
                 ) : (
                     <Link
-                        key={to}
-                        underline="hover"
+                        key={index}
                         color="inherit"
-                        onClick={() => handleClick(to)}
-                        sx={{ cursor: "pointer" }}
+                        onClick={() => handlePathClick(index)}
+                        sx={{ cursor: 'pointer' }}
+                        underline="hover"
                     >
-                        {decodeURIComponent(value)}
+                        {path}
                     </Link>
                 );
             })}
-
-
         </Breadcrumbs>
     );
-};
-
-export default BreadcrumbNav;
+}

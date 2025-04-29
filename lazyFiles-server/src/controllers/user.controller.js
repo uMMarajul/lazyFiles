@@ -14,7 +14,7 @@ const login = async (req, res, next) => {
 const logout = async (req, res, next) => {
     try {
         await userService.logout(req.user.id);
-        res.status(200).json({ message: 'Logout successful' });
+        res.status(200).json({ success: true, message: 'Logout successful' });
     } catch (error) {
         next(error);
     }
@@ -23,7 +23,7 @@ const logout = async (req, res, next) => {
 const getProfile = async (req, res, next) => {
     try {
         const user = await userService.getProfile(req.user.id);
-        res.status(200).json(user);
+        res.status(200).json({success: true,user});
     } catch (error) {
         next(error);
     }
