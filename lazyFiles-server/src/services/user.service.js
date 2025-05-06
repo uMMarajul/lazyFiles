@@ -12,7 +12,6 @@ const login = async (userData) => {
     }
 
     const userInfo = await verifyGoogleToken(credential);
-    console.log('userInfo', userInfo);
 
     // Check if user already exists
     let user = await User.findOne({ email: userInfo.email }).lean();

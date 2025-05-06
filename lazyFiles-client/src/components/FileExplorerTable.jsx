@@ -5,14 +5,21 @@ import {
     TableContainer,
     TableHead,
     TableRow,
+    Paper
 } from '@mui/material';
 import FileExplorerTableHeader from './FileExplorerTableHeader';
 import FileExplorerTableRow from './FileExplorerTableRow';
 
 export default function FileExplorerTable({ data, sortConfig, requestSort, handleItemClick }) {
     return (
-        <TableContainer>
-            <Table aria-label="file explorer table">
+        <TableContainer
+            component={Paper}
+            sx={{
+                width: '100%',
+                overflowX: 'auto',
+            }}
+        >
+            <Table aria-label="file explorer table" sx={{ minWidth: 600 }}>
                 <TableHead>
                     <TableRow>
                         <FileExplorerTableHeader
@@ -52,5 +59,7 @@ export default function FileExplorerTable({ data, sortConfig, requestSort, handl
                 </TableBody>
             </Table>
         </TableContainer>
+
+
     );
 }

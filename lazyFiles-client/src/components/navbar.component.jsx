@@ -8,9 +8,10 @@ import {
     Menu,
     MenuItem,
     Box,
-    useMediaQuery
+    useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import FolderIcon from "@mui/icons-material/Folder";
 import {useTheme} from "@mui/material/styles";
 import {useSelector} from "react-redux";
 
@@ -21,7 +22,6 @@ const Navbar = ({onMenuClick}) => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
     const userState = useSelector((state) => state.user);
-    console.log(userState);
 
     const handleAvatarClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -50,7 +50,12 @@ const Navbar = ({onMenuClick}) => {
                     </Typography>
                 </Box>
 
+
+
+
                 <IconButton onClick={handleAvatarClick}>
+
+
                     <Avatar src={userState.user?.profilePicture}/>
 
                 </IconButton>

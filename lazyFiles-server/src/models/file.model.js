@@ -69,29 +69,6 @@ const fileSystemSchema = new Schema({
     extension: {
         type: String,
         trim: true
-    },
-    // Optional metadata for file version control
-    versions: [{
-        s3Key: String,
-        createdAt: Date,
-        size: Number,
-        modifiedBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    }],
-    // For public sharing
-    isPublic: {
-        type: Boolean,
-        default: false
-    },
-    publicAccessToken: {
-        type: String,
-        default: null
-    },
-    publicAccessExpiry: {
-        type: Date,
-        default: null
     }
 }, {
     timestamps: true,

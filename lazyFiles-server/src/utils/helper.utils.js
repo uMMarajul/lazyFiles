@@ -14,3 +14,15 @@ function generateAuthToken( email, id) {
     }
 
 }
+
+const PERMISSION_LEVELS = {
+    VIEWER: 'viewer',  // Can only view/download
+    EDITOR: 'editor',  // Can edit, rename, move
+    OWNER: 'owner'     // Full control including delete and sharing
+};
+
+
+module.exports = {
+    generateAuthToken,
+    PERMISSION_LEVELS
+}

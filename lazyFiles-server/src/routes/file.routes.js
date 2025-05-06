@@ -8,10 +8,10 @@ const authMiddleware = require('../middlewares/auth.middleware');
 router.use(authMiddleware);
 
 
-router.post('/files', fileSystemController.uploadFile);
+router.post('/getUploadUrl', fileSystemController.uploadFile);
 router.post('/folders', fileSystemController.createFolder);
 
-router.get('/files', fileSystemController.getFiles);
+// router.get('/files', fileSystemController.getFiles);
 
 
 
